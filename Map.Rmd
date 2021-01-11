@@ -1,0 +1,56 @@
+---
+title: "Create a Web Page using R Markdown and Leaflet"
+subtitle: "Developing Data Products Course"
+author: "Carlos Gabriel Guerra Farfán"
+date: "10/01/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load Packages
+
+```{r chunk 1}
+library(leaflet)
+library(htmltools)
+```
+
+## Accessing the data from .csv file
+
+From Kagle: Dataset about the best restaurants in the world. By Megh Mayur. Contains the list of The World’s 50 Best Restaurants for 2018 (https://www.kaggle.com/mmayur/the-worlds-50-best-restaurants)
+
+```{r}
+setwd("C:/Users/gabis/OneDrive/Documentos/Scribble/7mo Semestre/Actividad Curricular Complementaria/Coursera/Developing Data Products/Semana 2/")
+datamap <- read.csv(file = "The Worlds 50 Best Restaurants 2018.csv", header = TRUE, sep = ",")
+
+#Creating data frame in order to manipulate the dataset like a table.
+mimapa <- data.frame(Ranking = datamap$Ranking,
+                     Name = datamap$Name,
+                     City = datamap$City,
+                     Country = datamap$Country,
+                     Latitude = datamap$Latitude,
+                     Longitude = datamap$Longitude
+                     )
+```
+
+## Activating the Map
+
+```{r chunk 3}
+map <- mimapa %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(popup=paste
+             ("<br>Country: ", 
+               htmlEscape(mimapa$Country), 
+              "<br>City: ", 
+               htmlEscape(mimapa$City), 
+              "<br>Restaurant: ", 
+               htmlEscape(mimapa$Name),
+              "<br>Ranking: ",
+               formatC(datamap$Ranking, format = "d", big.mark = ",")
+              ) 
+            )
+map
+```
