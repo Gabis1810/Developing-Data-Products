@@ -48,11 +48,3 @@ Puerto Ricans who were born in Puerto Rico are American citizens as if they were
 ### Data File:
 
 puertoricansinusa.csv
-
-The ui.R and server.R are the code for the shiny application: https://joanperez.shinyapps.io/dataproductsapp/
-
-### Application Details:
-
-The shiny application is deployed on ShinyApps.io server at: https://joanperez.shinyapps.io/dataproductsapp/
-The RStudio presentation slides is published to RPubs at: https://rpubs.com/joanperez/293128
-Git repository at: https://github.com/Gabis1810/Developing-Data-Products
