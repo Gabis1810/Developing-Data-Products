@@ -1,0 +1,32 @@
+---
+title: "R Markdown Presentation & Plotly"
+subtitle: "Developing Data Products Course"
+author: "Carlos Gabriel Guerra Farfán"
+date: "10/01/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 3D Surface Plot
+
+### Load Packages
+
+```{r}
+library(plotly)
+```
+
+## Plotting Map
+
+```{r}
+plot_ly(z = volcano, type = "surface")
+```
+
+## Boxplot
+
+```{r}
+p <- plot_ly(midwest, x = ~ percollege, color = ~ state, type = "box")
+p
+```
